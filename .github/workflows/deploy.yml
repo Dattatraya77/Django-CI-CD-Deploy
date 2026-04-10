@@ -29,7 +29,11 @@ jobs:
             git clone https://github.com/Dattatraya77/Django-CI-CD-Deploy.git Django-CI-CD-Deploy
           fi
 
+          sudo chown -R ubuntu:ubuntu /home/ubuntu/Django-CI-CD-Deploy
+
           cd Django-CI-CD-Deploy
+
+          git config --global --add safe.directory /home/ubuntu/Django-CI-CD-Deploy
 
           echo "Fetching Latest Code"
           git fetch --all
