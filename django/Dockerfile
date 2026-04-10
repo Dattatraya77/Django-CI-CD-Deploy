@@ -14,9 +14,14 @@ COPY requirements.txt /app/
 
 RUN pip install --upgrade pip
 
-# Add this line 👇 (IMPORTANT)
 RUN pip install gunicorn
 
 RUN pip install -r requirements.txt
 
 COPY . /app/
+
+# Add this 👇
+COPY entrypoint.sh /app/entrypoint.sh
+RUN chmod +x /app/entrypoint.sh
+
+CMD ["sh", "/app/entrypoint.sh"]
