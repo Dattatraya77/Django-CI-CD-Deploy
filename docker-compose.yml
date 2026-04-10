@@ -26,7 +26,7 @@ services:
     container_name: my-postgres-container
     restart: always
     volumes:
-      - postgres_db:/var/lib/postgresql/data/
+      - postgres_data:/var/lib/postgresql/data/
     env_file:
       - .env
     environment:
