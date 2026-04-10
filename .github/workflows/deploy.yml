@@ -23,8 +23,13 @@ jobs:
         port: 22
 
         script: |
-          cd /home/ubuntu/Django-CI-CD-Deploy
-
+          cd /home/ubuntu
+          
+          if [ ! -d "Django-CI-CD-Deploy" ]; then
+            https://github.com/Dattatraya77/Django-CI-CD-Deploy.git Django-CI-CD-Deploy
+          fi
+          
+          cd Django-CI-CD-Deploy
           git pull origin master
 
           docker-compose down
