@@ -24,14 +24,23 @@ jobs:
 
         script: |
           cd /home/ubuntu
-          
+
           if [ ! -d "Django-CI-CD-Deploy" ]; then
             git clone https://github.com/Dattatraya77/Django-CI-CD-Deploy.git Django-CI-CD-Deploy
           fi
-          
+
           cd Django-CI-CD-Deploy
+
+          echo "Fetching Latest Code"
+          git fetch --all
+
+          echo "Reset to Latest Commit"
+          git reset --hard origin/master
+
+          echo "Pull Latest Code"
           git pull origin master
 
+          echo "Restart Docker"
           docker-compose down
           docker-compose build
           docker-compose up -d
